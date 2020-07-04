@@ -1,4 +1,4 @@
-var express = require('express'),
+const express = require('express'),
 	mongoose = require('mongoose'),
 	methodOverride = require('method-override'),
 	bodyParser = require('body-parser'),
@@ -20,14 +20,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressSanitizer());
 app.use(methodOverride('_method'));
 
-var blogSchema = new mongoose.Schema({
+const blogSchema = new mongoose.Schema({
 	title: String,
 	image: String,
 	body: String,
 	created: { type: Date, default: Date.now }
 });
 
-var Blog = mongoose.model('Blog', blogSchema);
+const Blog = mongoose.model('Blog', blogSchema);
 
 app.get('/', function(req, res) {
 	res.redirect('/blogs');
